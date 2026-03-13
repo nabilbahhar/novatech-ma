@@ -1,0 +1,25 @@
+{
+  "name": "products",
+  "fields": [
+    { "name": "id",                   "type": "string" },
+    { "name": "sku",                  "type": "string" },
+    { "name": "title_commercial",     "type": "string",  "infix": true },
+    { "name": "brand",                "type": "string",  "facet": true },
+    { "name": "category",             "type": "string",  "facet": true },
+    { "name": "subcategory",          "type": "string",  "facet": true },
+    { "name": "description_short",    "type": "string",  "optional": true },
+    { "name": "price_ttc",            "type": "float",   "facet": true, "optional": true },
+    { "name": "price_ht",             "type": "float",   "optional": true },
+    { "name": "stock_qty",            "type": "int32" },
+    { "name": "availability_status",  "type": "string",  "facet": true },
+    { "name": "badge_best_price",     "type": "bool",    "facet": true, "optional": true },
+    { "name": "badge_new",            "type": "bool",    "facet": true, "optional": true },
+    { "name": "image_main",           "type": "string",  "optional": true },
+    { "name": "slug",                 "type": "string" },
+    { "name": "tags",                 "type": "string[]","optional": true, "facet": true },
+    { "name": "key_features",         "type": "string[]","optional": true }
+  ],
+  "default_sorting_field": "stock_qty",
+  "token_separators": ["-", "_", "/", "."],
+  "symbols_to_index": []
+}
