@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
   const q = searchParams.get("q")
   const inStock = searchParams.get("in_stock")
   const limit = parseInt(searchParams.get("limit") || "24")
+  const offset = parseInt(searchParams.get("offset") || "0")
   const sort = searchParams.get("sort") || "stock_qty"
   const exclude = searchParams.get("exclude")
   const hasImage = searchParams.get("has_image")
@@ -40,7 +41,7 @@ export async function GET(request: NextRequest) {
   // Product list
   let query = supabase
     .from("products")
-    .select("*")
+    .select("*", { count: "exact" })
     .eq("is_published", true)
     .eq("status", "published")
 
@@ -78,9 +79,9 @@ export async function GET(request: NextRequest) {
     query = query.order("stock_qty", { ascending: false })
   }
 
-  query = query.limit(limit)
+  query = query.range(offset, offset + limit - 1)
 
-  const { data, error } = await query
+  const { data, error, count } = await query
 
   if (error) {
     return NextResponse.json(
@@ -89,5 +90,5 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  return NextResponse.json({ products: data || [] })
+  return NextResponse.json({ products: data || [], total: count })
 }
