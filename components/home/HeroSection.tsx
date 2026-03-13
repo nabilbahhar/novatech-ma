@@ -124,8 +124,8 @@ export function HeroSection({ headline, sub, stats, ctas }: HeroSectionProps) {
                   className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex items-center justify-center"
                 >
                   <Image
-                    src="https://webobjects2.cdw.com/is/image/CDW/5765270?$product-detail$"
-                    alt="Dell Latitude"
+                    src="https://webobjects2.cdw.com/is/image/CDW/5852984?$product-detail$"
+                    alt="Dell Monitor"
                     width={200}
                     height={160}
                     className="object-contain drop-shadow-2xl"
@@ -138,8 +138,8 @@ export function HeroSection({ headline, sub, stats, ctas }: HeroSectionProps) {
                   className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex items-center justify-center mt-8"
                 >
                   <Image
-                    src="https://webobjects2.cdw.com/is/image/CDW/5466640?$product-detail$"
-                    alt="Jabra Evolve2"
+                    src="https://webobjects2.cdw.com/is/image/CDW/6772783?$product-detail$"
+                    alt="Logitech Presenter"
                     width={200}
                     height={160}
                     className="object-contain drop-shadow-2xl"

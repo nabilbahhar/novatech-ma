@@ -43,7 +43,7 @@ export function BrandsStrip() {
                 href={`/marques/${brand.slug}`}
                 className="group relative block"
               >
-                <span className="text-xl md:text-2xl font-display font-extrabold text-[#C8D5E8] group-hover:text-[#0B1F3A] transition-all duration-300">
+                <span className="text-xl md:text-2xl font-display font-extrabold text-[#8DA4C4] group-hover:text-[#0B1F3A] transition-all duration-300">
                   {brand.name}
                 </span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D42B3A] group-hover:w-full transition-all duration-300" />
