@@ -12,6 +12,7 @@ const nextConfig = {
       { protocol: "https", hostname: "**.philips.com" },
       { protocol: "https", hostname: "webobjects2.cdw.com" },
       { protocol: "https", hostname: "c1.neweggimages.com" },
+      { protocol: "https", hostname: "m.media-amazon.com" },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400,
