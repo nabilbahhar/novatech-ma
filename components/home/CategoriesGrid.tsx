@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { motion } from "framer-motion"
 import {
   Monitor,
   Laptop,
@@ -11,73 +14,127 @@ import {
 
 const CATEGORIES = [
   {
-    name: "Ordinateurs & PC",
+    name: "Ordinateurs",
+    desc: "PC portables & bureaux",
     slug: "ordinateurs",
     icon: Laptop,
-    color: "from-blue-500/10 to-blue-600/5",
+    gradient: "from-blue-600 to-blue-800",
+    iconBg: "bg-blue-500/20",
+    count: "40+",
   },
   {
-    name: "Écrans & Affichage",
+    name: "Écrans",
+    desc: "Moniteurs & affichage",
     slug: "ecrans",
     icon: Monitor,
-    color: "from-purple-500/10 to-purple-600/5",
+    gradient: "from-violet-600 to-violet-800",
+    iconBg: "bg-violet-500/20",
+    count: "25+",
   },
   {
     name: "Accessoires",
+    desc: "Claviers, souris, câbles",
     slug: "accessoires",
     icon: Cable,
-    color: "from-green-500/10 to-green-600/5",
+    gradient: "from-emerald-600 to-emerald-800",
+    iconBg: "bg-emerald-500/20",
+    count: "80+",
   },
   {
-    name: "Casques & Audio Pro",
+    name: "Audio Pro",
+    desc: "Casques & solutions UC",
     slug: "audio",
     icon: Headphones,
-    color: "from-orange-500/10 to-orange-600/5",
+    gradient: "from-orange-500 to-orange-700",
+    iconBg: "bg-orange-500/20",
+    count: "30+",
   },
   {
     name: "Bagagerie",
+    desc: "Sacoches & sacs à dos",
     slug: "bagagerie",
     icon: Briefcase,
-    color: "from-rose-500/10 to-rose-600/5",
+    gradient: "from-rose-500 to-rose-700",
+    iconBg: "bg-rose-500/20",
+    count: "15+",
   },
   {
     name: "Réseau",
+    desc: "Switches, routeurs, SFP",
     slug: "reseau",
     icon: Wifi,
-    color: "from-cyan-500/10 to-cyan-600/5",
+    gradient: "from-cyan-500 to-cyan-700",
+    iconBg: "bg-cyan-500/20",
+    count: "20+",
   },
   {
     name: "Impression",
+    desc: "Imprimantes & toners",
     slug: "impression",
     icon: Printer,
-    color: "from-amber-500/10 to-amber-600/5",
+    gradient: "from-amber-500 to-amber-700",
+    iconBg: "bg-amber-500/20",
+    count: "50+",
   },
 ]
 
 export function CategoriesGrid() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="font-display text-2xl font-bold text-[#0B1F3A] mb-6">
-        Nos catégories
-      </h2>
+    <section className="max-w-7xl mx-auto px-4 py-14">
+      <div className="flex items-end justify-between mb-8">
+        <div>
+          <h2 className="font-display text-2xl md:text-3xl font-extrabold text-[#0B1F3A]">
+            Nos catégories
+          </h2>
+          <p className="text-[#6B7A99] text-sm mt-1">
+            Trouvez rapidement ce dont vous avez besoin
+          </p>
+        </div>
+        <Link
+          href="/catalogue"
+          className="hidden md:inline-flex text-sm font-bold text-[#2354A4] hover:text-[#D42B3A] transition-colors"
+        >
+          Voir tout &rarr;
+        </Link>
+      </div>
+
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {CATEGORIES.map((cat) => {
+        {CATEGORIES.map((cat, i) => {
           const Icon = cat.icon
           return (
-            <Link
+            <motion.div
               key={cat.slug}
-              href={`/catalogue/${cat.slug}`}
-              className="group bg-white rounded-xl border border-[#E2E8F4] p-5 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
             >
-              <div
-                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-3`}
+              <Link
+                href={`/catalogue/${cat.slug}`}
+                className="group relative block overflow-hidden rounded-2xl border border-[#E2E8F4] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <Icon className="w-6 h-6 text-[#2354A4]" />
-              </div>
-              <h3 className="font-semibold text-sm text-[#0B1F3A] group-hover:text-[#2354A4] transition-colors">
-                {cat.name}
-              </h3>
-            </Link>
+                {/* Colored top bar */}
+                <div className={`h-1.5 bg-gradient-to-r ${cat.gradient}`} />
+
+                <div className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div
+                      className={`w-14 h-14 rounded-xl ${cat.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="w-7 h-7 text-[#0B1F3A]" />
+                    </div>
+                    <span className="text-[10px] font-bold text-[#6B7A99] bg-[#F7F9FC] px-2 py-1 rounded-full">
+                      {cat.count} réf.
+                    </span>
+                  </div>
+
+                  <h3 className="font-bold text-[#0B1F3A] mt-4 group-hover:text-[#2354A4] transition-colors">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-[#6B7A99] mt-0.5">{cat.desc}</p>
+                </div>
+              </Link>
+            </motion.div>
           )
         })}
       </div>

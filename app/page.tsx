@@ -4,7 +4,7 @@ import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd"
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar"
 import { Header } from "@/components/layout/Header"
 import { HeroSection } from "@/components/home/HeroSection"
-import { TrustBar } from "@/components/home/TrustBar"
+import { PromoBanners } from "@/components/home/PromoBanners"
 import { CategoriesGrid } from "@/components/home/CategoriesGrid"
 import { FeaturedProducts } from "@/components/home/FeaturedProducts"
 import { BrandsStrip } from "@/components/home/BrandsStrip"
@@ -33,8 +33,8 @@ export default function HomePage() {
         sub="Stock réel disponible · Livraison 24-48h · Paiement à la livraison"
         stats={[
           { value: "6 800+", label: "Unités en stock" },
-          { value: "232+", label: "Références disponibles" },
-          { value: "35", label: "Familles de produits" },
+          { value: "250+", label: "Références disponibles" },
+          { value: "35+", label: "Marques partenaires" },
         ]}
         ctas={[
           { label: "Voir le catalogue", href: "/catalogue", primary: true },
@@ -42,20 +42,13 @@ export default function HomePage() {
         ]}
       />
 
-      <TrustBar
-        items={[
-          { icon: "truck", label: "Livraison J+2 Casablanca" },
-          { icon: "shield", label: "Stock garanti vérifié" },
-          { icon: "clock", label: "Devis en 2h chrono" },
-          { icon: "receipt", label: "Facture TVA officielle" },
-        ]}
-      />
+      <PromoBanners />
 
       <CategoriesGrid />
 
       <FeaturedProducts
         title="Disponibles immédiatement"
-        limit={12}
+        limit={16}
         sortBy="stock_qty"
       />
 
