@@ -80,7 +80,7 @@ const CATEGORIES = [
 
 export function CategoriesGrid() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-14">
+    <section className="max-w-7xl mx-auto px-4 py-10">
       <div className="flex items-end justify-between mb-8">
         <div>
           <h2 className="font-display text-2xl md:text-3xl font-extrabold text-[#0B1F3A]">

@@ -4,7 +4,6 @@ import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd"
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar"
 import { Header } from "@/components/layout/Header"
 import { HeroSection } from "@/components/home/HeroSection"
-import { PromoBanners } from "@/components/home/PromoBanners"
 import { CategoriesGrid } from "@/components/home/CategoriesGrid"
 import { FeaturedProducts } from "@/components/home/FeaturedProducts"
 import { BrandsStrip } from "@/components/home/BrandsStrip"
@@ -41,8 +40,6 @@ export default function HomePage() {
           { label: "Devis entreprise", href: "/devis", primary: false },
         ]}
       />
-
-      <PromoBanners />
 
       <CategoriesGrid />
 
