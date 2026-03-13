@@ -18,6 +18,8 @@ export async function GET(request: NextRequest) {
   const limit = parseInt(searchParams.get("limit") || "24")
   const sort = searchParams.get("sort") || "stock_qty"
   const exclude = searchParams.get("exclude")
+  const hasImage = searchParams.get("has_image")
+  const featured = searchParams.get("featured")
 
   // Single product by slug
   if (slug) {
@@ -60,6 +62,12 @@ export async function GET(request: NextRequest) {
   }
   if (inStock === "true") query = query.gt("stock_qty", 0)
   if (exclude) query = query.neq("id", parseInt(exclude))
+  if (hasImage === "true") query = query.not("image_main", "is", null)
+  if (featured === "true") {
+    // For featured: only products with images, prioritize computers/monitors/audio
+    query = query.not("image_main", "is", null)
+    query = query.in("category", ["ordinateurs", "ecrans", "audio", "accessoires"])
+  }
 
   // Sort
   if (sort === "price_asc") {

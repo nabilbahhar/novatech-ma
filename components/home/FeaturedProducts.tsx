@@ -22,7 +22,7 @@ export function FeaturedProducts({
     async function load() {
       try {
         const res = await fetch(
-          `/api/products?limit=${limit}&sort=${sortBy}&in_stock=true`
+          `/api/products?limit=${limit}&sort=${sortBy}&in_stock=true&featured=true`
         )
         if (res.ok) {
           const data = await res.json()
